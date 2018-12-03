@@ -17,7 +17,6 @@ BOOST_AUTO_TEST_CASE(a_new_school_has_an_empty_roster)
     BOOST_REQUIRE(school_.roster().empty());
 }
 
-#if defined(EXERCISM_RUN_ALL_TESTS)
 BOOST_AUTO_TEST_CASE(adding_a_student_adds_them_to_the_roster_for_the_given_grade)
 {
     school_.add("Aimee", 2);
@@ -51,6 +50,7 @@ BOOST_AUTO_TEST_CASE(adding_students_to_different_grades_adds_them_to_the_roster
     BOOST_TEST(expected == actual);
 }
 
+
 BOOST_AUTO_TEST_CASE(grade_returns_the_students_in_that_grade_in_alphabetical_order)
 {
     school_.add("Franklin", 5);
@@ -62,6 +62,7 @@ BOOST_AUTO_TEST_CASE(grade_returns_the_students_in_that_grade_in_alphabetical_or
     const vector<string> expected{"Bradley", "Franklin"};
     BOOST_TEST(expected == actual);
 }
+
 
 BOOST_AUTO_TEST_CASE(grade_returns_an_empty_array_if_there_are_no_students_in_that_grade)
 {
@@ -87,12 +88,13 @@ BOOST_AUTO_TEST_CASE(the_student_names_in_each_grade_in_the_roster_are_sorted)
     BOOST_TEST(expected == actual);
 }
 
+
 BOOST_AUTO_TEST_CASE(checking_a_grade_should_not_change_the_roster)
 {
     school_.grade(1);
     BOOST_REQUIRE(school_.roster().empty());
 }
-
+#if defined(EXERCISM_RUN_ALL_TESTS)
 #endif
 
 BOOST_AUTO_TEST_SUITE_END()
