@@ -8,11 +8,22 @@ BOOST_AUTO_TEST_CASE(first)
     BOOST_REQUIRE_EQUAL(2, prime::nth(1));
 }
 
-#if defined(EXERCISM_RUN_ALL_TESTS)
+
 BOOST_AUTO_TEST_CASE(second)
 {
     BOOST_REQUIRE_EQUAL(3, prime::nth(2));
 }
+
+BOOST_AUTO_TEST_CASE(third)
+{
+    BOOST_REQUIRE_EQUAL(5, prime::nth(3));
+}
+
+BOOST_AUTO_TEST_CASE(fourth)
+{
+    BOOST_REQUIRE_EQUAL(7, prime::nth(4));
+}
+
 
 BOOST_AUTO_TEST_CASE(sixth)
 {
@@ -28,4 +39,5 @@ BOOST_AUTO_TEST_CASE(weird_case)
 {
     BOOST_REQUIRE_THROW(prime::nth(0), std::domain_error);
 }
+#if defined(EXERCISM_RUN_ALL_TESTS)
 #endif
