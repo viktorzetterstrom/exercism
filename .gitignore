@@ -6,3 +6,5 @@ package-lock.json
 target/
 .nrepl-port
 .lein-failures
+cmake-build-debug/
+.idea/
