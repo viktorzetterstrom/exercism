@@ -1,16 +1,17 @@
 #include "sum_of_multiples.h"
+#include <vector>
 
-int sum_of_multiples::to(int multiples[] , int number) {
-  int multipleCount = 0;
+int sum_of_multiples::to(const std::vector<int> multiples , const int limit) {
+  int multipleSum = 0;
 
-  int multiplesLength = sizeof(multiples) / sizeof(multiples[0]);
-  for (int i = 0; i < multiplesLength; i++) {
-    for (int j = 1; j < number; j++) {
-      if (number % j == 0) {
-        multipleCount++;
+  for (int number = 1; number < limit; number++) {
+    for (const int &multiple : multiples) {
+      if (number % multiple == 0) {
+        multipleSum += number;
+        break;
       }
     }
   }
 
-  return multipleCount;
+  return multipleSum;
 }
