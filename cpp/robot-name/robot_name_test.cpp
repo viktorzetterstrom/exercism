@@ -2,6 +2,7 @@
 #define BOOST_TEST_MAIN
 #include <boost/test/unit_test.hpp>
 #include <boost/regex.hpp>
+#include <iostream>
 
 using namespace std;
 
@@ -17,7 +18,7 @@ BOOST_AUTO_TEST_CASE(has_a_name)
     BOOST_REQUIRE(boost::regex_match(robot.name(), name_pattern));
 }
 
-#if defined(EXERCISM_RUN_ALL_TESTS)
+
 BOOST_AUTO_TEST_CASE(name_is_the_same_each_time)
 {
     const robot_name::robot robot;
@@ -54,4 +55,5 @@ BOOST_AUTO_TEST_CASE(exhausting_digits_yields_different_names)
         BOOST_REQUIRE(boost::regex_match(robot.name(), name_pattern));
     }
 }
+#if defined(EXERCISM_RUN_ALL_TESTS)
 #endif
