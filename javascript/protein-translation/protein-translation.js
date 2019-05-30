@@ -31,9 +31,18 @@ const CODON_PROTEIN_MAP = new Map([
 function translate(rna) {
   if (!rna) return [];
 
-  return rna
-    .match(/[AUGC]{3}/g)
-    .map(codon => CODON_PROTEIN_MAP.get(codon));
+  let stopped = false;
+  const codons = rna.match(/[AUGC]{3}/g);
+  if (!codons) throw Error('Invalid codon');
+
+  return codons
+    .reduce((proteins, codon) => {
+      const protein = CODON_PROTEIN_MAP.get(codon)
+      if (protein === 'STOP') stopped = true;
+
+      if (!stopped) proteins.push(protein);
+      return proteins;
+    }, []);
 }
 
 module.exports = { translate };
