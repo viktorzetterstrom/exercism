@@ -1,4 +1,4 @@
-#include "say.h"
+  #include "say.h"
 
 #include <string>
 
@@ -59,7 +59,7 @@ std::string say::in_english(unsigned long long input) {
     // Add '-' for final word if input still > 0.
     if (input > 0) words += "-";
   }
-  
+
   if (input < 10 && input > 0) {
     words += upToTen[input];
   }
