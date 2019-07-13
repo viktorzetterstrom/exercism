@@ -3,8 +3,8 @@ export class Words {
   count(str) {
     return str
       .trim()
-      .split(/[ \n\t]+/g)
-      .map(word => word.toLowerCase())
+      .toLowerCase()
+      .split(/\s+/g)
       .reduce((words, current) => ({
         ...words,
         [current]: words.hasOwnProperty(current)
