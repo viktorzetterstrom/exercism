@@ -1,17 +1,10 @@
 const COLORS =
   ["black","brown","red","orange","yellow","green","blue","violet","grey","white"];
 
-function colorCode(wantedColor) {
-  return COLORS.indexOf(wantedColor);
-}
+const colorCode = (wantedColor) => COLORS.indexOf(wantedColor);
 
-function value(colorsArr) {
-  const valueStr = colorsArr
+export const value = colors => Number(
+  colors
     .map(colorCode)
-    .join('');
-
-  return Number.parseInt(valueStr);
-}
-
-
-module.exports = { value };
+    .join('')
+);
