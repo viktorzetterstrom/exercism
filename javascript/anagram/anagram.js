@@ -1,19 +1,11 @@
-const isAnagramIgnoreCase = (wordA, wordB) => {
-  if (wordA.toLowerCase() === wordB.toLowerCase()) return false;
+const isAnagram = (wordA, wordB) => 
+    wordA.toLowerCase() !== wordB.toLowerCase()
+    && normalize(wordA) === normalize(wordB);
 
-  const lettersA = sortedLetterCount(wordA);
-  const lettersB = sortedLetterCount(wordB);
-  return JSON.stringify(lettersA) === JSON.stringify(lettersB);
-}
-
-const sortedLetterCount = word => [...word.toLowerCase()]
+const normalize = word => word.toLowerCase()
+  .split('')
   .sort()
-  .reduce((acc, letter) => ({
-    ...acc, 
-    [letter]: acc[letter]
-      ? acc[letter] += 1
-      : 1
-  }), {});
+  .join('');
 
 export class Anagram {
   constructor(word) {
@@ -21,6 +13,6 @@ export class Anagram {
   }
 
   matches(words) {
-    return words.filter(word => isAnagramIgnoreCase(this._word, word));
+    return words.filter(word => isAnagram(this._word, word));
   }
 }
