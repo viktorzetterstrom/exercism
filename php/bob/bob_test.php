@@ -9,9 +9,9 @@ class BobTest extends PHPUnit\Framework\TestCase
      */
     private $bob;
 
-    public function setUp()
+    public function setUp(): void
     {
-        $this->bob = new Bob;
+        $this->bob = new Bob();
     }
 
     public function testStatingSomething()
