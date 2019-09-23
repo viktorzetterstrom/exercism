@@ -1,5 +1,4 @@
 <?php
-
 function toRoman(int $number): string {
   $romanNumeralMap = [
     0 => '', 1 => 'I', 2 => 'II', 3 => 'III', 4 => 'IV', 5 => 'V', 6 => 'VI', 7 => 'VII', 8 => 'VIII', 9 => 'IX',
@@ -8,10 +7,11 @@ function toRoman(int $number): string {
     900 => 'CM', 1000 => 'M', 2000 => 'MM', 3000 => 'MMM'
   ];
 
-  $digits = str_explode($number);
-  $roman = array_reduce($digits, function($carry, $item) {
-    $carry .= $romanNumeralMap[$item];
-  }, '');
-
+  $digits = str_split($number);
+  $roman = '';
+  foreach ($digits as $position => $digit) {
+    $value = $digit * pow(10, (count($digits) - $position - 1));
+    $roman .= $romanNumeralMap[$value];
+  }
   return $roman;
 }
