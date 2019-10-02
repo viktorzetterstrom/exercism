@@ -1,7 +1,7 @@
 <?php
 
 function encode($input) {
-    return preg_replace_callback('/(.)\1{1,}/', function($matches) {
+    return preg_replace_callback('/(.)\1+/', function($matches) {
         return strlen($matches[0]) . $matches[1];
     }, $input);
 }
