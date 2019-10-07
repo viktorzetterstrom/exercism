@@ -5,6 +5,7 @@ const colorCode = (wantedColor) => COLORS.indexOf(wantedColor);
 
 export const value = colors => Number(
   colors
+    .splice(0, 2)
     .map(colorCode)
     .join('')
 );
