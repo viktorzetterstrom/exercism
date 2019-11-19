@@ -5,9 +5,7 @@ import (
 	"time"
 )
 
-const GIGASECOND = 1000000000
-
 // AddGigasecond adds a gigasecond to time passed as argument and returns the resulting time.
 func AddGigasecond(t time.Time) time.Time {
-	return t.Add(time.Second * GIGASECOND)
+	return t.Add(time.Second * 1_000_000_000)
 }
