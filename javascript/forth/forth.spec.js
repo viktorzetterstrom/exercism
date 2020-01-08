@@ -100,22 +100,22 @@ describe('Forth', () => {
       forth.evaluate('1 2 + 4 -');
       expect(forth.stack).toEqual([-1]);
     });
-    xtest('performs multiplication and division', () => {
+    test('performs multiplication and division', () => {
       forth.evaluate('2 4 * 3 /');
       expect(forth.stack).toEqual([2]);
     });
   });
 
   describe('dup', () => {
-    xtest('copies a value on the stack', () => {
+    test('copies a value on the stack', () => {
       forth.evaluate('1 dup');
       expect(forth.stack).toEqual([1, 1]);
     });
-    xtest('copies the top value on the stack', () => {
+    test('copies the top value on the stack', () => {
       forth.evaluate('1 2 dup');
       expect(forth.stack).toEqual([1, 2, 2]);
     });
-    xtest('errors if there is nothing on the stack', () => {
+    test('errors if there is nothing on the stack', () => {
       expect(() => {
         forth.evaluate('dup');
       }).toThrow(new Error('Stack empty'));
@@ -123,15 +123,15 @@ describe('Forth', () => {
   });
 
   describe('drop', () => {
-    xtest('removes the top value on the stack if it is the only one', () => {
+    test('removes the top value on the stack if it is the only one', () => {
       forth.evaluate('1 drop');
       expect(forth.stack).toEqual([]);
     });
-    xtest('removes the top value on the stack if it is not the only one', () => {
+    test('removes the top value on the stack if it is not the only one', () => {
       forth.evaluate('1 2 drop');
       expect(forth.stack).toEqual([1]);
     });
-    xtest('errors if there is nothing on the stack', () => {
+    test('errors if there is nothing on the stack', () => {
       expect(() => {
         forth.evaluate('drop');
       }).toThrow(new Error('Stack empty'));
@@ -139,20 +139,20 @@ describe('Forth', () => {
   });
 
   describe('swap', () => {
-    xtest('swaps the top two values on the stack if they are the only ones', () => {
+    test('swaps the top two values on the stack if they are the only ones', () => {
       forth.evaluate('1 2 swap');
       expect(forth.stack).toEqual([2, 1]);
     });
-    xtest('swaps the top two values on the stack if they are not the only ones', () => {
+    test('swaps the top two values on the stack if they are not the only ones', () => {
       forth.evaluate('1 2 3 swap');
       expect(forth.stack).toEqual([1, 3, 2]);
     });
-    xtest('errors if there is only one value on the stack', () => {
+    test('errors if there is only one value on the stack', () => {
       expect(() => {
         forth.evaluate('1 swap');
       }).toThrow(new Error('Stack empty'));
     });
-    xtest('errors if there is nothing on the stack', () => {
+    test('errors if there is nothing on the stack', () => {
       expect(() => {
         forth.evaluate('swap');
       }).toThrow(new Error('Stack empty'));
@@ -160,20 +160,20 @@ describe('Forth', () => {
   });
 
   describe('over', () => {
-    xtest('copies the second element if there are only two', () => {
+    test('copies the second element if there are only two', () => {
       forth.evaluate('1 2 over');
       expect(forth.stack).toEqual([1, 2, 1]);
     });
-    xtest('copies the second element if there are more than two', () => {
+    test('copies the second element if there are more than two', () => {
       forth.evaluate('1 2 3 over');
       expect(forth.stack).toEqual([1, 2, 3, 2]);
     });
-    xtest('errors if there is only one value on the stack', () => {
+    test('errors if there is only one value on the stack', () => {
       expect(() => {
         forth.evaluate('1 over');
       }).toThrow(new Error('Stack empty'));
     });
-    xtest('errors if there is nothing on the stack', () => {
+    test('errors if there is nothing on the stack', () => {
       expect(() => {
         forth.evaluate('over');
       }).toThrow(new Error('Stack empty'));
