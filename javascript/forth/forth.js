@@ -40,6 +40,9 @@ const over = (stack) => {
   return [...stack, stack[stack.length - 2]];
 }
 
+const isDefinitionCommand = (str) => /^:.*;$/.test(str);
+const isNumber = (str) => /^-?[0-9]+$/.test(str);
+
 const operations = Object.freeze({
   '+': (stack) => add(stack),
   '-': (stack) => subtract(stack),
@@ -54,26 +57,50 @@ const operations = Object.freeze({
 export class Forth {
   constructor() {
     this._stack = [];
+    this._userDefined = {};
   }
 
   evaluate(inputString) {
-    if (/^:.*;$/.test(inputString)) return addDefinition(inputString);
+    if (isDefinitionCommand(inputString)) return this.addDefinition(inputString);
 
-    const input = [...inputString.split(' ').map((str) => /^-?[0-9]+$/.test(str)
+    const inputRaw = [...inputString.split(' ').map((str) => isNumber(str)
       ? Number(str)
-      : str
+      : str.toLowerCase()
     )];
 
-
+    const input = [];
+    inputRaw.forEach((i) => {
+      if (this._userDefined[i]) {
+        this._userDefined[i].forEach((u) => {
+          input.push(isNumber(u)
+            ? Number(u)
+            : u.toLowerCase());
+        });
+      } else {
+        input.push(i);
+      }
+    });
 
     while (input.length > 0) {
       const next = input.shift();
-      if (operations[next] !== undefined) this._stack = operations[next.toLowerCase()](this._stack);
+      if (typeof next === 'string') {
+        if (operations[next] === undefined) throw new Error('Unknown command');
+        this._stack = operations[next](this._stack);
+      } 
       else this._stack.push(next);
     }
   }
 
-  addDefinition()
+
+  addDefinition(inputString) {
+    const [operationName, ...operations] = inputString
+      .match(/^:(.*);$/)[1]
+      .trim()
+      .split(' ');
+
+    if (isNumber(operationName)) throw new Error('Invalid definition');
+    this._userDefined[operationName.toLowerCase()] = operations;
+  }
 
   get stack() {
     return this._stack;
