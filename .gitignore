@@ -10,3 +10,4 @@ cmake-build-debug/
 php/.phpunit.result.cache
 *.icloud
 .DS_Store
+.lein-repl-history
