@@ -1,5 +1,8 @@
 (ns reverse-string)
+(require '[clojure.string :as str])
 
 (defn reverse-string [s]
-  (clojure.string/reverse s)
+  (str/join
+    (reverse
+      (str/split s #"")))
 )
