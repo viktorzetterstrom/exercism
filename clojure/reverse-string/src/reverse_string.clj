@@ -2,7 +2,4 @@
 (require '[clojure.string :as str])
 
 (defn reverse-string [s]
-  (str/join
-    (reverse
-      (str/split s #"")))
-)
+  (apply str (reduce conj () s)))
