@@ -15,6 +15,6 @@
 
 (defn isbn?
   [isbn]
-  (if (= (count (str-to-isbn-list isbn)) 10)
+  (if (re-matches #"\d-?\d{3}-?\d{5}-?[\dX]" isbn)
     (= (isbn-sum (str-to-isbn-list isbn)) 0)
     false))
