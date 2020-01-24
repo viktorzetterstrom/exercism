@@ -29,7 +29,7 @@
     (is (= (rle/run-length-encode "aabbbcccc") "2a3b4c"))))
 
 (deftest decode-empty-string
-  (testing "decode empty string"y
+  (testing "decode empty string"
     (is (= (rle/run-length-decode "") ""))))
 
 (deftest decode-single-characters
