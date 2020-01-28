@@ -1,5 +1,2 @@
-main () {
-  echo "Hello, World!";
-  exit 0;
-}
-main "$@"
+#!/usr/bin/env bash
+echo "Hello, World!";
