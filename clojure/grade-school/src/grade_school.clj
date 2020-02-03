@@ -1,9 +1,7 @@
 (ns grade-school)
 
 (defn grade [school grade]
-  (if (nil? (school grade))
-    []
-    (school grade)))
+  (get school grade []))
 
 (defn add [school name grade]
     (merge school {grade (vec (conj (school grade) name))}))
