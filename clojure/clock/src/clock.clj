@@ -4,9 +4,9 @@
 (def minutes-per-hour 60)
 
 (defn clock->string [clock]
-  (str
-   (format "%02d:" (quot clock minutes-per-hour))
-   (format "%02d" (mod clock minutes-per-hour))))
+  (format "%02d:%02d"
+          (quot clock minutes-per-hour)
+          (mod clock minutes-per-hour)))
 
 (defn clock [hours minutes]
   (mod
