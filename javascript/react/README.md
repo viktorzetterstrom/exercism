@@ -12,7 +12,7 @@ cells). Implement updates so that when an input value is changed, values
 propagate to reach a new stable system state.
 
 In addition, compute cells should allow for registering change notification
-callbacks.  Call a cell’s callbacks when the cell’s value in a new stable
+callbacks. Call a cell’s callbacks when the cell’s value in a new stable
 state has changed from the previous stable state.
 
 ## Setup
@@ -42,7 +42,6 @@ In the test suites all tests but the first have been skipped.
 
 Once you get a test passing, you can enable the next one by changing `xtest` to
 `test`.
-
 
 ## Submitting Incomplete Solutions
 
