@@ -11,26 +11,29 @@ const OCR_NUMBERS_MAP = Object.freeze({
   " _ |_| _|   ": "9",
 });
 
+const ROW_HEIGHT = 4;
+const DIGIT_WIDTH = 3;
+
 export const convert = (numbers) => {
   const numbersArray = numbers.split("\n");
 
   const lines = [];
   while (numbersArray.length > 0) {
     let [rowOne, rowTwo, rowThree, rowFour] = numbersArray;
-    numbersArray.splice(0, 4);
+    numbersArray.splice(0, ROW_HEIGHT);
 
     let line = "";
     while (rowOne.length > 0) {
       const ocr =
-        rowOne.substring(0, 3) +
-        rowTwo.substring(0, 3) +
-        rowThree.substring(0, 3) +
-        rowFour.substring(0, 3);
+        rowOne.substring(0, DIGIT_WIDTH) +
+        rowTwo.substring(0, DIGIT_WIDTH) +
+        rowThree.substring(0, DIGIT_WIDTH) +
+        rowFour.substring(0, DIGIT_WIDTH);
 
-      rowOne = rowOne.substring(3);
-      rowTwo = rowTwo.substring(3);
-      rowThree = rowThree.substring(3);
-      rowFour = rowFour.substring(3);
+      rowOne = rowOne.substring(DIGIT_WIDTH);
+      rowTwo = rowTwo.substring(DIGIT_WIDTH);
+      rowThree = rowThree.substring(DIGIT_WIDTH);
+      rowFour = rowFour.substring(DIGIT_WIDTH);
 
       const matchingNumber = OCR_NUMBERS_MAP[ocr];
       line += matchingNumber || "?";
