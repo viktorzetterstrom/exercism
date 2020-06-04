@@ -7,7 +7,9 @@ const translateWord = (word) => {
   }
 
   const [match] = word.match(consonantStart);
-  return `${word.replace(consonantStart, "")}${match}ay`;
+  if (match) {
+    return `${word.replace(consonantStart, "")}${match}ay`;
+  }
 };
 
 export class translator {
