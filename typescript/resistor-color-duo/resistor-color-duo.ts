@@ -25,6 +25,6 @@ export class ResistorColor {
   value = (): number => {
     const first = ColorValues[this.colors[0]];
     const second = ColorValues[this.colors[1]];
-    return Number(`${first}${second}`);
+    return first * 10 + second;
   };
 }
