@@ -1,12 +1,9 @@
 class Pangram {
-  private letters: string;
-
-  constructor(sentence: string) {
-    this.letters = sentence.toLowerCase().replace(/[^a-z]/g, "");
-  }
+  constructor(public sentence: string) {}
 
   isPangram(): boolean {
-    return new Set(this.letters).size === 26;
+    const letters = this.sentence.toLowerCase().replace(/[^a-z]/g, "");
+    return new Set(letters).size === 26;
   }
 }
 
