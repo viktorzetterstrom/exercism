@@ -1,5 +1,6 @@
 type DNA = "G" | "C" | "T" | "A";
 type RNA = "C" | "G" | "A" | "U";
+type Strand = string;
 
 class Transcriptor {
   toRna(strand: string): string {
@@ -9,7 +10,7 @@ class Transcriptor {
 }
 
 class DnaStrand {
-  private strand: DNA[];
+  private strand: Strand;
 
   private readonly toRnaMap: Record<DNA, RNA> = {
     G: "C",
@@ -18,15 +19,17 @@ class DnaStrand {
     A: "U",
   };
 
-  constructor(strand: string) {
+  constructor(strand: Strand) {
     if (!DnaStrand.isValidStrand(strand)) {
       throw new Error("Invalid input DNA.");
     }
-    this.strand = strand.split("") as DNA[];
+    this.strand = strand;
   }
 
-  public transcribeToRna(): string {
-    return this.strand.map((n) => this.toRnaMap[n]).join("");
+  public transcribeToRna(): Strand {
+    return this.strand.replace(/[ACGT]/g, (match) => {
+      return this.toRnaMap[match as DNA];
+    });
   }
 
   public static isValidStrand(dnaStrand: string): boolean {
