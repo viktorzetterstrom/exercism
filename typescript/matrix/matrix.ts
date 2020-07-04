@@ -1,7 +1,7 @@
 type MatrixString = string;
 
 class Matrix {
-  public rows: number[][];
+  readonly rows: number[][];
 
   constructor(matrix: MatrixString) {
     this.rows = matrix.split("\n").map((row) => row.split(" ").map(Number));
