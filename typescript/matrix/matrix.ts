@@ -1,18 +1,18 @@
 type MatrixString = string;
 
 class Matrix {
-  readonly rows: number[][];
+  constructor(private matrixString: MatrixString) {}
 
-  constructor(matrix: MatrixString) {
-    this.rows = this.createRows(matrix);
+  get rows(): number[][] {
+    return this.parseRows(this.matrixString);
   }
 
   get columns(): number[][] {
     return this.transpose(this.rows);
   }
 
-  private createRows(matrix: MatrixString): number[][] {
-    return matrix.split("\n").map((row) => row.split(" ").map(Number));
+  private parseRows(matrixString: MatrixString): number[][] {
+    return matrixString.split("\n").map((row) => row.split(" ").map(Number));
   }
 
   private transpose(matrix: number[][]): number[][] {
