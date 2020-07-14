@@ -13,7 +13,7 @@ const roundTwoDecimals = (num: number): number => Number(num.toFixed(2));
 
 class SpaceAge {
   private readonly earthYearSeconds = 31557600;
-  public relativeOrbitalPeriods: { [value in Planets]: number } = {
+  public relativeOrbitalPeriods: Record<Planets, number> = {
     earth: 1,
     mercury: 0.2408467,
     venus: 0.61519726,
