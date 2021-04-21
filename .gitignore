@@ -11,3 +11,7 @@ php/.phpunit.result.cache
 *.icloud
 .DS_Store
 .lein-repl-history
+.calva
+.cpcache
+cljs-test-runner-out
+.elixir_ls
