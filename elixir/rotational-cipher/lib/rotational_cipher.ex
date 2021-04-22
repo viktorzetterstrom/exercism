@@ -1,4 +1,7 @@
 defmodule RotationalCipher do
+  @upper ?A..?Z
+  @lower ?a..?z
+
   @doc """
   Given a plaintext and amount to shift by, return a rotated string.
 
@@ -13,10 +16,10 @@ defmodule RotationalCipher do
 
   @spec rotate_char(char :: char(), shift :: integer) :: char()
   defp rotate_char(char, shift) do
-    case char do
-      uppercase when uppercase in 65..90 -> 65 + rem(char + shift - 65, 26)
-      lowercase when lowercase in 97..122 -> 97 + rem(char + shift - 97, 26)
-      _ -> char
+    cond do
+      char in @upper -> ?A + rem(char + shift - ?A, 26)
+      char in @lower -> ?a + rem(char + shift - ?a, 26)
+      true -> char
     end
   end
 end
