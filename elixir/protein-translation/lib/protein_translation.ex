@@ -1,5 +1,5 @@
 defmodule ProteinTranslation do
-  @codon_proten %{
+  @codon_protein %{
     "UGU" => "Cysteine",
     "UGC" => "Cysteine",
     "UUA" => "Leucine",
@@ -43,7 +43,7 @@ defmodule ProteinTranslation do
   def of_codon(codon) do
     case(String.length(codon)) do
       3 ->
-        protein = Map.get(@codon_proten, codon)
+        protein = Map.get(@codon_protein, codon)
         if protein != nil, do: {:ok, protein}, else: {:error, "invalid RNA"}
 
       _ ->
