@@ -13,7 +13,7 @@ defmodule Bob do
   end
 
   @spec is_shouting(input :: String.t()) :: boolean()
-  defp is_shouting(input), do: String.upcase(input) === input && Regex.match?(~r/[A-Я]/, input)
+  defp is_shouting(input), do: String.upcase(input) === input && String.downcase(input) !== input
 
   @spec is_question(input :: String.t()) :: boolean()
   defp is_question(input), do: String.ends_with?(input, "?")
