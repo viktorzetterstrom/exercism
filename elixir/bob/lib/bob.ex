@@ -13,13 +13,11 @@ defmodule Bob do
   end
 
   @spec is_shouting(input :: String.t()) :: boolean()
-  defp is_shouting(input) do
-    Regex.match?(~r/^[^a-z]+!?\??$/, input) && Regex.match?(~r/[A-Я]/, input)
-  end
+  defp is_shouting(input), do: String.upcase(input) === input && Regex.match?(~r/[A-Я]/, input)
 
   @spec is_question(input :: String.t()) :: boolean()
-  defp is_question(input), do: Regex.match?(~r/\?$/, input)
+  defp is_question(input), do: String.ends_with?(input, "?")
 
   @spec is_silence(input :: String.t()) :: boolean()
-  defp is_silence(input), do: Regex.match?(~r/^\s*$/, input)
+  defp is_silence(input), do: input === ""
 end
